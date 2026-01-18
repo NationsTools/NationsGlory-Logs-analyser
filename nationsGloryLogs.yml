@@ -1,0 +1,176 @@
+# ===========================
+# Commandes Joueur
+# ===========================
+player_command:
+  pattern: "{timestamp} [INFO] {player} issued server command: {command}"
+
+player_alias:
+  pattern: "{timestamp} [INFO] {player} issued alias: {command}"
+
+# ===========================
+# NationsStats
+# ===========================
+stats_login:
+  pattern: "{timestamp} [NationsStats] Connexion de {player} avec {money}$"
+
+# ===========================
+# HDV — Hôtel des ventes
+# ===========================
+hdv_sell:
+  pattern: "{timestamp} [HDV] {player} vient de mettre en vente {qty}x ID:({itemid}) pour un prix unitaire de {unitprice} $/U (UUID:{uuid})"
+
+hdv_buy:
+  pattern: "{timestamp} [HDV] {buyer} vient d'acheter {qty}x ID:({itemid}) à {seller} pour une somme totale de {totalprice} $ (UUID:{uuid})"
+
+hdv_remove:
+  pattern: "{timestamp} [HDV] {player} a retiré une annonce ({qty}x ID:({itemid}) pour {unitprice} $/U) (UUID:{uuid})"
+
+hdv_info_pricecalc:
+  pattern: "{timestamp} [HDV] Le calcul du prix d'achat HDV affiché suit le calcul (quantité * prix unitaire * quantité), il faut diviser par la quantité pour avoir le bon prix d'achat"
+
+# ===========================
+# Factions / Relations / Claims
+# ===========================
+faction_kick:
+  pattern: "{timestamp} kicked {player} from the faction {faction}"
+
+chunk_claim:
+  pattern: "{timestamp} {player} did buy"
+
+chunk_unclaim:
+  pattern: "{timestamp} {player} did sell"
+
+chunk_pillage:
+  pattern: "{timestamp} {player} did pillage"
+
+country_sale:
+  pattern: "{timestamp} MISE EN VENTE PAYS {country} POUR {price}$"
+
+relation_change:
+  pattern: "{timestamp} ({country_a}) set relation {relation} to {country_b}"
+
+war_cancel:
+  pattern: "{timestamp} Cancel war between {country_a} and {country_b} because the player {player} leaved the country {leaved_country}"
+
+country_refuse_colonisation:
+  pattern: "{timestamp} Le pays {country} refuse d'être colonisé par {empire}, mise en ennemie automatique"
+
+# ===========================
+# Transactions bancaires
+# ===========================
+bank_deposit:
+  pattern: "{timestamp} [NationsGUI] TRANSACTION BANK - DEPOSIT {player} {amount}$ in {country}"
+
+bank_take:
+  pattern: "{timestamp} [NationsGUI] TRANSACTION BANK - TAKE {player} {amount}$ in {country}"
+
+# ===========================
+# Taxes / salaires
+# ===========================
+player_tax:
+  pattern: "{timestamp} [Factions] {player} vient d'être prélevé d'une taxe de {amount}"
+
+player_salary:
+  pattern: "{timestamp} [Factions] {player} vient de recevoir un salaire de {amount}"
+
+empire_tax:
+  pattern: "{timestamp} [Factions] Le pays {country} vient de payer la taxe empire à {empire}"
+
+# ===========================
+# PvP / Combat / Kills
+# ===========================
+kill_wilderness:
+  pattern: "{timestamp} [Factions] KILL EN WILDERNESS DE {killer} ({killer_country}) sur {victim} ({victim_country})"
+
+combat_fired:
+  pattern: "{timestamp} MISE EN COMBAT DE {player} FIRED"
+
+combat_bullet:
+  pattern: "{timestamp} MISE EN COMBAT DE {player} HIT BY BULLET"
+
+# ===========================
+# Intrusions / Divers
+# ===========================
+kick_chat:
+  pattern: "{timestamp} {player} tried to send an empty message"
+
+intrusion:
+  pattern: "{timestamp} Intrusion de {player} dans le territoire de {country}"
+
+# ===========================
+# Trade (échanges)
+# ===========================
+trade_give:
+  pattern: "{timestamp} [TRADE] {player} GIVE {itemid} x{qty} TO {target}"
+
+trade_remove_money:
+  pattern: "{timestamp} [TRADE] {player} -{amount}"
+
+trade_add_money:
+  pattern: "{timestamp} [TRADE] {player} {amount}"
+
+trade_give_back:
+  pattern: "{timestamp} [TRADE] GIVE ITEM BACK TO {player} : {itemid} x{qty}"
+
+trade_give_back_fail:
+  pattern: "{timestamp} [TRADE] FAIL (drop) GIVE ITEM BACK TO {player} : {itemid} x{qty}"
+
+# ===========================
+# Missiles
+# ===========================
+missile_launch_request:
+  pattern: "{timestamp} Call playerCanLauncherMissile for missile ({missile}) ({player}) ({x}) ({y}) ({z})"
+
+missile_explode_request:
+  pattern: "{timestamp} Call missileCanExplode for missile ({missile}) ({player}) ({x}) ({y}) ({z})"
+
+missile_exploded:
+  pattern: "{timestamp} {missile} {noise} exploded in ({x}),({y}),({z})"
+
+# ===========================
+# Banque — Ajout / retrait membres
+# ===========================
+bank_add_member:
+  pattern: "{timestamp} Ajout du joueur {player} dans la banque {country} par {by}"
+
+bank_remove_member:
+  pattern: "{timestamp} Retrait du joueur {player} de la banque {country} par {by}"
+
+# ===========================
+# Homes (set/delete)
+# ===========================
+home_set:
+  pattern: "{timestamp} Player {player} set new home {name} in {x}, {y}, {z}, {world}"
+
+home_delete:
+  pattern: "{timestamp} Player {player} deleted home {name}"
+
+# ===========================
+# Machines / Config
+# ===========================
+machine_edit:
+  pattern: "{timestamp} Modification machine de hasard en ({x}), ({y}), ({z}) par ({player}) : nouveau taux : ({rate})"
+
+# ===========================
+# Inventaires (Backpack / EnderChest)
+# ===========================
+backpack_transaction:
+  pattern: "{timestamp} BackPack Transaction - {player} - +{added}@-{removed}"
+
+enderchest_transaction:
+  pattern: "{timestamp} EnderChest Transaction - {player} - +{added}@-{removed}"
+
+# ===========================
+# Debug skill
+# ===========================
+player_skills:
+  pattern: "{timestamp} [Debug] Player {player} has skills : miner : {miner}, hunter : {hunter}, farmer : {farmer}, builder : {builder}, engineer : {engineer}, lumberjack : {lumberjack}"
+
+# ===========================
+# NationsJob
+# ===========================
+spawn_obscure_block:
+  pattern: "{timestamp} [INFO] [NationsJob] SPAWN OBSCURE BLOCK IN {x}, {y}, {z} BY PLAYER {player}"
+
+spawn_millenial_wood:
+  pattern: "{timestamp} [INFO] [NationsJob] SPAWN MILLENIAL WOOD IN {x}, {y}, {z} BY PLAYER {player}"
