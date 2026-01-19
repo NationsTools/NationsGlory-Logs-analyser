@@ -174,3 +174,123 @@ spawn_obscure_block:
 
 spawn_millenial_wood:
   pattern: "{timestamp} [INFO] [NationsJob] SPAWN MILLENIAL WOOD IN {x}, {y}, {z} BY PLAYER {player}"
+
+# ===========================
+# Auctions / Enchères
+# ===========================
+auction_new:
+  pattern: "{timestamp} [Auction] New Player auction {details}"
+
+auction_bid:
+  pattern: "{timestamp} [Auction] New Player bid {details}"
+
+auction_end:
+  pattern: "{timestamp} [Auction] End of auction {details}"
+
+auction_refund:
+  pattern: "{timestamp} [Auction] Refund {details}"
+
+auction_cancelled:
+  pattern: "{timestamp} [Auction] CANCELLED {details}"
+
+# ===========================
+# ChestShop
+# ===========================
+chestshop_transaction:
+  pattern: "{timestamp} [ChestShop] {player} {action} {qty} {item} for {price} {direction} {target} at [world] {x}, {y}, {z}"
+
+chestshop_transaction_log:
+  pattern: "{timestamp} LOG TRANSACTION CHEST {details}"
+
+# ===========================
+# Adminshop / Catalog
+# ===========================
+adminshop_transaction:
+  pattern: "{timestamp} {player} {details} from Adminshop"
+
+adminshop_transaction_lower:
+  pattern: "{timestamp} {player} {details} from adminshop"
+
+catalog_transaction:
+  pattern: "{timestamp} [Catalog] {details}"
+
+# ===========================
+# War / Warzone
+# ===========================
+war_add:
+  pattern: "{timestamp} Add war {details}"
+
+war_start:
+  pattern: "{timestamp} START WAR {details}"
+
+war_surrender:
+  pattern: "{timestamp} SURREND WAR {details}"
+
+war_status_change:
+  pattern: "{timestamp} Change status of war request between {country_a} and {country_b} to {status}"
+
+war_won:
+  pattern: "{timestamp} War won {details}"
+
+warzone_add:
+  pattern: "{timestamp} [WarZone] Add {details}"
+
+# ===========================
+# Economie / Pays
+# ===========================
+country_buy:
+  pattern: "{timestamp} ACHAT PAYS {details}"
+
+country_action_buy:
+  pattern: "{timestamp} ACHAT ACTION : {details}"
+
+country_found:
+  pattern: "{timestamp} {player} vient de fonder le pays {country}"
+
+country_new_leader:
+  pattern: "{timestamp} {player} est le nouveau dirigeant du pays {country}"
+
+colony_request:
+  pattern: "{timestamp} {player} vient de faire une demande de colonie sur {country}"
+
+# ===========================
+# Powerboost
+# ===========================
+powerboost_player:
+  pattern: "{timestamp} POWERBOOST DE {player} {details}"
+
+powerboost_country:
+  pattern: "{timestamp} Powerboost to {country} {details}"
+
+# ===========================
+# Meteore
+# ===========================
+meteor_spawn:
+  pattern: "{timestamp} METEOR SPAWNED IN {details}"
+
+# ===========================
+# Access / Permissions
+# ===========================
+access_set:
+  pattern: "{timestamp} {player} set access to player {target} {details}"
+
+access_remove:
+  pattern: "{timestamp} {player} remove access to player {target} {details}"
+
+# ===========================
+# Divers
+# ===========================
+duel_win:
+  pattern: "{timestamp} AFTER WIN DUEL {details}"
+
+restricted_item_interaction:
+  pattern: "{timestamp} {player} interacts with restricted item {details}"
+
+missile_launch:
+  pattern: "{timestamp} {player} vient de lancer un missile {details}"
+
+# ===========================
+# Player session
+# ===========================
+player_left:
+  pattern: "{timestamp} [INFO] {player} left the game."
