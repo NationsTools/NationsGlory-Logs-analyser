@@ -1,6 +1,6 @@
-import fs from "fs";
-import yaml from "js-yaml";
-import glob from "glob";
+const fs = require("fs");
+const yaml = require("js-yaml");
+const glob = require("glob");
 
 const SNAKE_CASE_REGEX = /^[a-z][a-z0-9_]*$/;
 
