@@ -11,7 +11,7 @@ player_alias:
 # NationsStats
 # ===========================
 stats_login:
-  pattern: "{timestamp} [NationsStats] Connexion de {player} avec {money}$"
+  pattern: "{timestamp} [INFO] [NationsStats] Connexion de {player} avec {money}$"
 
 # ===========================
 # HDV — Hôtel des ventes
@@ -25,39 +25,66 @@ hdv_buy:
 hdv_remove:
   pattern: "{timestamp} [HDV] {player} a retiré une annonce ({qty}x ID:({itemid}) pour {unitprice} $/U) (UUID:{uuid})"
 
-hdv_info_pricecalc:
-  pattern: "{timestamp} [HDV] Le calcul du prix d'achat HDV affiché suit le calcul (quantité * prix unitaire * quantité), il faut diviser par la quantité pour avoir le bon prix d'achat"
-
 # ===========================
 # Factions / Relations / Claims
 # ===========================
+
 faction_kick:
-  pattern: "{timestamp} kicked {player} from the faction {faction}"
+  pattern: "{timestamp} [INFO] [Factions 2.2.2] {player} kicked {kicked_player} from the faction {country}"
 
 chunk_claim:
-  pattern: "{timestamp} {player} did buy"
+  pattern: "{timestamp} [INFO] {country} {player} buy {world} {chunk_x} {chunk_y} pour {for_country} à votre pays"
 
 chunk_unclaim:
-  pattern: "{timestamp} {player} did sell"
+  pattern: "{timestamp} [INFO] {country} {player} sell {world} {chunk_x} {chunk_y} pour {for_country} à votre pays"
 
 chunk_pillage:
-  pattern: "{timestamp} {player} did pillage"
+  pattern: "{timestamp} [INFO] {country} {player} pillage {world} {chunk_x} {chunk_y} pour {for_country} à votre pays"
 
 country_sale:
-  pattern: "{timestamp} MISE EN VENTE PAYS {country} POUR {price}$"
+  pattern: "{timestamp} [INFO] MISE EN VENTE PAYS {country} POUR {price}$"
 
 relation_change:
   pattern: "{timestamp} ({country_a}) set relation {relation} to {country_b}"
 
+# ===========================
+# Wars
+# ===========================
+
+war_add:
+  pattern: "{timestamp} [INFO] [NationsUtils] Add war event {war_reason} between {country_a} and {country_b}"
+
+war_start:
+  pattern: "{timestamp} [INFO] [NationsGUI] START WAR between {country_a} and {country_b} for reason {reason}"
+
+war_surrender:
+  pattern: "{timestamp} [INFO] [NationsGUI] {country_a} SURREND WAR AGAINST {country_b} APPLY REWARDS : {reward_type}#{amount}"
+
+war_status_change:
+  pattern: "{timestamp} [INFO] [NationsUtils] Change status of war request between {country_a} and {country_b} by {player} to {status}"
+
+war_inactivity:
+  pattern: "{timestamp} [INFO] [NationsUtils] Change war inactivity for {country} from {latest_value} to {new_value}({country_a} vs {country_b})"
+
+war_won:
+  pattern: "{timestamp} [INFO] [NationsUtils] War won by {country_a} against {country_b}"
+
 war_cancel:
   pattern: "{timestamp} Cancel war between {country_a} and {country_b} because the player {player} leaved the country {leaved_country}"
 
-country_refuse_colonisation:
-  pattern: "{timestamp} Le pays {country} refuse d'être colonisé par {empire}, mise en ennemie automatique"
+war_event:
+  pattern: "{timestamp} [INFO] [NationsUtils] Add war event {event} between {country_a} and {country_b}"
 
+war_decrease_powerloss:
+  pattern: "{timestamp} [INFO] [Factions] Decrease powerLoss from war against {country} from {latest_value} to {new_value}"
+
+war_end_decrease_powerloss:
+  pattern: "{timestamp} [INFO] [Factions] Decrease powerLoss from won in war against {country} from 1 to -9 (no powerLoss left)"
+  
 # ===========================
 # Transactions bancaires
 # ===========================
+
 bank_deposit:
   pattern: "{timestamp} [NationsGUI] TRANSACTION BANK - DEPOSIT {player} {amount}$ in {country}"
 
@@ -67,6 +94,7 @@ bank_take:
 # ===========================
 # Taxes / salaires
 # ===========================
+
 player_tax:
   pattern: "{timestamp} [Factions] {player} vient d'être prélevé d'une taxe de {amount}"
 
@@ -79,6 +107,7 @@ empire_tax:
 # ===========================
 # PvP / Combat / Kills
 # ===========================
+
 kill_wilderness:
   pattern: "{timestamp} [Factions] KILL EN WILDERNESS DE {killer} ({killer_country}) sur {victim} ({victim_country})"
 
@@ -91,6 +120,7 @@ combat_bullet:
 # ===========================
 # Intrusions / Divers
 # ===========================
+
 kick_chat:
   pattern: "{timestamp} {player} tried to send an empty message"
 
@@ -100,6 +130,7 @@ intrusion:
 # ===========================
 # Trade (échanges)
 # ===========================
+
 trade_give:
   pattern: "{timestamp} [TRADE] {player} GIVE {itemid} x{qty} TO {target}"
 
@@ -118,6 +149,7 @@ trade_give_back_fail:
 # ===========================
 # Missiles
 # ===========================
+
 missile_launch_request:
   pattern: "{timestamp} Call playerCanLauncherMissile for missile ({missile}) ({player}) ({x}) ({y}) ({z})"
 
@@ -130,6 +162,7 @@ missile_exploded:
 # ===========================
 # Banque — Ajout / retrait membres
 # ===========================
+
 bank_add_member:
   pattern: "{timestamp} Ajout du joueur {player} dans la banque {country} par {by}"
 
@@ -139,6 +172,7 @@ bank_remove_member:
 # ===========================
 # Homes (set/delete)
 # ===========================
+
 home_set:
   pattern: "{timestamp} Player {player} set new home {name} in {x}, {y}, {z}, {world}"
 
@@ -148,12 +182,14 @@ home_delete:
 # ===========================
 # Machines / Config
 # ===========================
+
 machine_edit:
   pattern: "{timestamp} Modification machine de hasard en ({x}), ({y}), ({z}) par ({player}) : nouveau taux : ({rate})"
 
 # ===========================
 # Inventaires (Backpack / EnderChest)
 # ===========================
+
 backpack_transaction:
   pattern: "{timestamp} BackPack Transaction - {player} - +{added}@-{removed}"
 
@@ -163,12 +199,14 @@ enderchest_transaction:
 # ===========================
 # Debug skill
 # ===========================
+
 player_skills:
   pattern: "{timestamp} [Debug] Player {player} has skills : miner : {miner}, hunter : {hunter}, farmer : {farmer}, builder : {builder}, engineer : {engineer}, lumberjack : {lumberjack}"
 
 # ===========================
 # NationsJob
 # ===========================
+
 spawn_obscure_block:
   pattern: "{timestamp} [INFO] [NationsJob] SPAWN OBSCURE BLOCK IN {x}, {y}, {z} BY PLAYER {player}"
 
@@ -178,6 +216,7 @@ spawn_millenial_wood:
 # ===========================
 # ChestShop
 # ===========================
+
 chestshop_transaction:
   pattern: "{timestamp} [ChestShop] {player} {action} {qty} {item} for {price} {direction} {target} at [world] {x}, {y}, {z}"
 
@@ -187,26 +226,13 @@ chestshop_transaction_log:
 # ===========================
 # Adminshop / Catalog
 # ===========================
+
 catalog_transaction:
   pattern: "{timestamp} [INFO] [NationsGUI] [Catalog] Player {player} bought the item {id} {quantity} for {price}$ (including delivery {tax}$) to player Bank"
 
 # ===========================
-# War / Warzone
+# Warzone
 # ===========================
-war_add:
-  pattern: "{timestamp} [INFO] [NationsUtils] Add war event {war_reason} between {country_a} and {country_b}"
-
-war_start:
-  pattern: "{timestamp} [INFO] [NationsGUI] START WAR between {country_a} and {country_b} for reason {reason}"
-
-war_surrender:
-  pattern: "{timestamp} [INFO] [NationsGUI] {country_a} SURREND WAR AGAINST {country_b} APPLY REWARDS : {reward_type}#{amount}"
-
-war_status_change:
-  pattern: "{timestamp} Change status of war request between {country_a} and {country_b} by {player} to {status}"
-
-war_won:
-  pattern: "{timestamp} [INFO] [NationsUtils] War won by {country_a} against {country_b}"
 
 warzone_add_skill:
   pattern: "{timestamp} [WarZone] Add {details}"
@@ -220,36 +246,44 @@ warzone_add_powerboost:
 # ===========================
 # Economie / Pays
 # ===========================
+
 country_buy:
   pattern: "{timestamp} [INFO] ACHAT PAYS {country} PAR {pseudo} POUR {price}$"
 
 country_action_buy:
-  pattern: "{timetamp} [INFO] [NationsGUI] ACHAT ACTION : {country_a} ({player}) buy action of {country_b} for {price}$"
+  pattern: "{timetamp} [INFO] [NationsGUI] ACHAT ACTION : {country_a}({player}) buy action of {country_b} for {price}$"
 
 country_found:
-  pattern: "{timestamp} {player} vient de fonder le pays {country}"
+  pattern: "{timestamp} [INFO] ONU >> {country} vient de fonder le pays {country} !"
 
 country_new_leader:
-  pattern: "{timestamp} {player} est le nouveau dirigeant du pays {country}"
+  pattern: "{timestamp} [INFO] ONU >> {player} est le nouveau dirigeant du pays {country} !"
+
 
 # ===========================
 # Powerboost
 # ===========================
+
 powerboost_player:
   pattern: "{timestamp} POWERBOOST DE {player} {details}"
 
 powerboost_country:
   pattern: "{timestamp} Powerboost to {country} {details}"
 
+powerboost_decrease:
+  pattern: "{timestamp} [INFO] [Factions] BAISSE POWERBOOST DE {country} DE {latest_value} A {new_value}"
+
 # ===========================
 # Meteor
 # ===========================
+
 meteor_spawn:
   pattern: "{timestamp} [INFO] METEOR SPAWNED IN {planet} on player {player} at {x}, {y}, {z}"
 
 # ===========================
 # Access / Permissions
 # ===========================
+
 access_set:
   pattern: "{timestamp} [INFO] [Factions] Player {player} set access to player {player} in chunk {x}, {z} to true"
 
@@ -259,6 +293,7 @@ access_remove:
 # ===========================
 # Divers
 # ===========================
+
 duel_start:
   pattern: "{timestamp} [INFO] START DUEL {player_a} vs {player_b} BET {amount}"
 
@@ -266,10 +301,11 @@ restricted_item_interaction:
   pattern: "{timestamp} [INFO] [NationsUtils] Player {player} interacts with restricted item {id}"
 
 missile_launch:
-  pattern: "{timestamp} {player} vient de lancer un missile {details}"
+  pattern: "{timestamp} [INFO] ({country}) vient de lancer un missile {missil} sur {target}"
 
 # ===========================
 # Player session
 # ===========================
+
 player_left:
-  pattern: '{timestamp} [INFO] §7[*banner id="minus"]§7 {player} ({number}/300)'
+  pattern: '{timestamp} [INFO] §7[*banner id="minus"]§7 {player} ({number}/{maxplayer})'
