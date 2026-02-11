@@ -325,6 +325,9 @@ meteor_spawn:
 # ASTEROIDS
 # ===========================
 
+asteroids_fail:
+  pattern: "{timestamp} [INFO] Failed to delete region file after retries:"
+
 asteroids_delete:
   pattern: "{timestamp} [INFO] ASTEROIDS - Deleted {count} region files during world init (retries: {retry_count})"
 
